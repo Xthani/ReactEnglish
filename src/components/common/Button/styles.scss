@@ -1,0 +1,21 @@
+.button {
+  padding: 10px 20px;
+  font-size: 18px;
+
+  color: #212121;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: darken(#e0e0e0, 10%);
+}
+
+.button.primary {
+  background-color: #e0e0e0;
+}
+
+.button.secondary {
+  /* Стили для второстепенного варианта */
+}
