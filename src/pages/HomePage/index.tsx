@@ -1,11 +1,11 @@
 import React from "react";
 
-import MainComponent from "components/common/MainComponent";
+import QuizComponent from "components/common/QuizComponent";
 
 const HomePage = () => {
   return (
     <div>
-      <MainComponent />
+      <QuizComponent />
     </div>
   );
 };

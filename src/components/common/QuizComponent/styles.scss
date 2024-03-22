@@ -53,18 +53,4 @@
       border-color: #ffffff;
     }
   }
-
-  button {
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #e0e0e0;
-    color: #212121;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-
-    &:hover {
-      background-color: darken(#e0e0e0, 10%);
-    }
-  }
 }
