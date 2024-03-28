@@ -1,12 +1,7 @@
 import React from "react";
+import { ISVGProps } from "./types";
 
-interface IconProps {
-  width?: string;
-  height?: string;
-  color?: string;
-}
-
-export const ArrowIcon: React.FC<IconProps> = ({
+export const ArrowIcon: React.FC<ISVGProps> = ({
   width = "24",
   height = "24",
   color = "currentColor",
