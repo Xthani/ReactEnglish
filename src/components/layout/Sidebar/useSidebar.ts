@@ -21,9 +21,11 @@ export const useSidebar = () => {
     if (selectOption.value) {
       navigate(`/lesson/${selectOption.value}`);
     } else {
-      navigate("/");
+      navigateToHome();
     }
   };
+
+  const navigateToHome = () => navigate("/");
 
   const handleClear = () => {
     dispatch(clearWords());
@@ -33,5 +35,12 @@ export const useSidebar = () => {
     dispatch(fetchLessons());
   }, [dispatch]);
 
-  return { lessons, isLoad, handleChange, defaultValue, handleClear };
+  return {
+    lessons,
+    isLoad,
+    handleChange,
+    defaultValue,
+    handleClear,
+    navigateToHome,
+  };
 };
