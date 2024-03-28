@@ -7,17 +7,20 @@ import { useSidebar } from "./useSidebar";
 import "./styles.scss";
 
 const Sidebar = () => {
-  const { isLoad, lessons } = useSidebar();
+  const { isLoad, lessons, handleChange, defaultValue, handleClear } =
+    useSidebar();
 
   return (
     <div className="header">
       <Select
-        onChange={(selectOption) => console.log(selectOption)}
+        value={defaultValue}
+        onChange={handleChange}
         defaultOptionLabel="Выбрать урок"
         loading={isLoad}
         option={lessonsToOptions(lessons)}
       />
       <button>Добавить урок</button>
+      <button onClick={handleClear}>Начать заново</button>
     </div>
   );
 };

@@ -2,14 +2,14 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import HomePage from "pages/HomePage";
+import LessonPage from "pages/LessonPage";
 
 const MainPanel = () => {
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/lesson/:id" element={<LessonPage />} />
+    </Routes>
   );
 };
 

@@ -10,6 +10,7 @@ interface Props {
   loading?: boolean;
   defaultOptionLabel: string;
   onChange?: (selectedOption: ISelectOption) => void;
+  value?: string;
 }
 
 const Select: FC<Props> = ({
@@ -17,11 +18,13 @@ const Select: FC<Props> = ({
   loading,
   defaultOptionLabel,
   onChange,
+  value = "",
 }) => {
   const { selectedValue, handleChange, handleClearSelection } = useSelect({
     option,
     defaultOptionLabel,
     onChange,
+    value,
   });
   return (
     <div

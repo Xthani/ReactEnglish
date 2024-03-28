@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ISelectOption } from "./types";
 
 export const useSelect = ({
   option,
   defaultOptionLabel,
   onChange,
+  value,
 }: {
   option: ISelectOption[];
   defaultOptionLabel: string;
   onChange?: (selectedOption: ISelectOption) => void;
+  value?: string;
 }) => {
-  const [selectedValue, setSelectedValue] = useState("");
+  const [selectedValue, setSelectedValue] = useState(value);
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;
