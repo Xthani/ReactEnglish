@@ -5,6 +5,7 @@ import { clearError } from "features/error/errorSlice";
 
 import Modal from "components/common/Modal";
 import MainPanel from "components/layout/MainPanel";
+import Sidebar from "components/layout/Sidebar";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -15,7 +16,7 @@ const App = () => {
         {errorMessage}
       </Modal>
       <div className="app-container">
-        {/*Sidebar <br />*/}
+        <Sidebar />
         <MainPanel />
       </div>
     </>

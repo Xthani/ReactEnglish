@@ -3,12 +3,14 @@ import storage from "redux-persist/lib/storage";
 import { combineReducers } from "redux";
 import { persistReducer, persistStore } from "redux-persist";
 
-import dictionaryReducer from "../features/dictionary/slice";
+import dictionaryReducer from "features/dictionary/slice";
+import lessonsReducer from "features/lessons/slice";
 import errorReducer from "features/error/errorSlice";
 import { setupInterceptors } from "../services/api";
 
 const rootReducer = combineReducers({
   dictionary: dictionaryReducer,
+  lessons: lessonsReducer,
   error: errorReducer,
 });
 
