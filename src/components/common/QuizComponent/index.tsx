@@ -16,6 +16,7 @@ const QuizComponent: FC = () => {
     userAnswer,
     setUserAnswer,
     handleSubmit,
+    answer,
   } = useQuiz();
 
   return (
@@ -45,7 +46,13 @@ const QuizComponent: FC = () => {
           ),
         )}
       </div>
-      <div className="question">{question}</div>
+      <div className="question">
+        {answer.value && (
+          <div className={`answer ${answer.status}`}>{answer.value}</div>
+        )}
+
+        <div>{question}</div>
+      </div>
       {!unansweredWords.length && (
         <Button onClick={handleClear}>Начать заново</Button>
       )}

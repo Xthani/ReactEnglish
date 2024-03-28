@@ -32,6 +32,25 @@
   color: #e0e0e0;
   font-size: 40px;
   text-align: center;
+
+  .answer {
+    display: inline-block;
+    padding: 20px 50px;
+    border-radius: 50%;
+    border: 1px solid #e0e0e0;
+  }
+
+  .green {
+    color: green;
+  }
+
+  .yellow {
+    color: yellow;
+  }
+
+  .red {
+    color: red;
+  }
 }
 
 .answer-section {
