@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 import { useAppDispatch, useAppSelector } from "hooks";
 import { getRandomElement } from "utils";
@@ -21,6 +21,17 @@ interface IProgressBarState {
   red: IProgressBarItem;
 }
 
+enum AnswerStatus {
+  Green = "green",
+  Yellow = "yellow",
+  Red = "red",
+}
+
+interface IAnswerType {
+  value: string;
+  status?: AnswerStatus;
+}
+
 export const useQuiz = () => {
   const dispatch = useAppDispatch();
   const { dictionary, greenWords, yellowWords, redWords } = useAppSelector(
@@ -29,6 +40,9 @@ export const useQuiz = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
   const [questionText, setQuestionText] = useState<string>("Переведите слово:");
   const [userAnswer, setUserAnswer] = useState<string>("");
+  const [answer, setAnswer] = useState<IAnswerType>({
+    value: "",
+  });
   const [progressBar, setProgressBar] = useState<IProgressBarState>({
     green: { answeredCount: 0, progressPercent: 0 },
     yellow: { answeredCount: 0, progressPercent: 0 },
@@ -47,7 +61,7 @@ export const useQuiz = () => {
   }, [dictionary, greenWords]);
 
   const question = useMemo(() => {
-    return unansweredWords.length
+    return unansweredWords.length && unansweredWords[currentQuestionIndex]
       ? `${questionText} «${unansweredWords[currentQuestionIndex].ru}»`
       : "Вопросы кончились!";
   }, [unansweredWords, currentQuestionIndex, questionText]);
@@ -111,6 +125,7 @@ export const useQuiz = () => {
     if (!errorRate) {
       dispatch(greenWordsAdded(unansweredWords[currentQuestionIndex]));
       setQuestionText(`Верно - «${dictionaryValueEn}», а теперь переведите:`);
+      setAnswer({ value: correctUserAnswer, status: AnswerStatus.Green });
       return;
     }
 
@@ -119,9 +134,11 @@ export const useQuiz = () => {
       setQuestionText(
         `Почти правильно - «${dictionaryValueEn}», следующее слово:`,
       );
+      setAnswer({ value: correctUserAnswer, status: AnswerStatus.Yellow });
     } else {
       dispatch(redWordsAdded(unansweredWords[currentQuestionIndex]));
       setQuestionText(`Неверно - «${dictionaryValueEn}», идем дальше:`);
+      setAnswer({ value: correctUserAnswer, status: AnswerStatus.Red });
     }
   };
   return {
@@ -133,5 +150,6 @@ export const useQuiz = () => {
     userAnswer,
     setUserAnswer,
     handleSubmit,
+    answer,
   };
 };
