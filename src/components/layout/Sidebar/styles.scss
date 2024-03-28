@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  gap: 10px;
+  background: #171717;
+  width: 100%;
+  padding: 20px 40px;
+  align-items: center;
+
+  button {
+    padding: 10px 50px;
+    font-size: 18px;
+    color: #e0e0e0; // Цвет текста, чтобы сочетался с общей темой
+    background: transparent;
+    border: 1px solid #c2b7b7; // Граница, чтобы соответствовать стилю input
+    border-radius: 5px;
+    outline: none; // Убираем контур при фокусе
+    cursor: pointer;
+  }
+}
+//
+//// Добавляем стили для активного и отключённого состояния кнопки, если необходимо
+//.button:disabled {
+//  background-color: lighten(#171717, 10%);
+//  color: lighten(#e0e0e0, 10%);
+//  cursor: not-allowed;
+//}
