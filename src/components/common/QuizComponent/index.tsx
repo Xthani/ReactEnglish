@@ -5,8 +5,11 @@ import { ArrowIcon } from "assets/icons";
 import Button from "../Button";
 
 import "./styles.scss";
+import { IDictionary } from "../../../features/dictionary/types";
 
-const QuizComponent: FC = () => {
+const QuizComponent: FC<{ lessonDictionary?: IDictionary[] }> = ({
+  lessonDictionary,
+}) => {
   const {
     dictionaryPercent,
     unansweredWords,
@@ -17,7 +20,7 @@ const QuizComponent: FC = () => {
     setUserAnswer,
     handleSubmit,
     answer,
-  } = useQuiz();
+  } = useQuiz({ lessonDictionary });
 
   return (
     <div className="main-container">

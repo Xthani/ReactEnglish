@@ -1,13 +1,14 @@
 .header {
+  width: 250px;
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  gap: 20px;
   background: #171717;
-  width: 100%;
-  padding: 20px 40px;
-  align-items: center;
+  padding: 50px 40px 0 20px;
 
   button {
-    padding: 10px 50px;
+    text-align: start;
+    padding: 10px 40px 10px 10px;
     font-size: 18px;
     color: #e0e0e0; // Цвет текста, чтобы сочетался с общей темой
     background: transparent;
@@ -17,10 +18,3 @@
     cursor: pointer;
   }
 }
-//
-//// Добавляем стили для активного и отключённого состояния кнопки, если необходимо
-//.button:disabled {
-//  background-color: lighten(#171717, 10%);
-//  color: lighten(#e0e0e0, 10%);
-//  cursor: not-allowed;
-//}

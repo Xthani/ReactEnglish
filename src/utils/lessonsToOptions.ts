@@ -3,7 +3,7 @@ import { ISelectOption } from "../components/common/Select/types";
 
 export function lessonsToOptions(lessons: ILessons[]): ISelectOption[] {
   return lessons.map(({ lesson }, index) => ({
-    value: `lesson_${index}`,
+    value: `${index + 1}`,
     label: lesson,
   }));
 }

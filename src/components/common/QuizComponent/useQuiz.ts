@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { useAppDispatch, useAppSelector } from "hooks";
 import { getRandomElement } from "utils";
@@ -9,6 +9,7 @@ import {
   redWordsAdded,
   yellowWordsAdded,
 } from "features/dictionary/slice";
+import { IDictionary } from "../../../features/dictionary/types";
 
 interface IProgressBarItem {
   answeredCount: number;
@@ -32,11 +33,18 @@ interface IAnswerType {
   status?: AnswerStatus;
 }
 
-export const useQuiz = () => {
+export const useQuiz = ({
+  lessonDictionary,
+}: {
+  lessonDictionary?: IDictionary[];
+}) => {
   const dispatch = useAppDispatch();
-  const { dictionary, greenWords, yellowWords, redWords } = useAppSelector(
-    (state) => state.dictionary,
-  );
+  const {
+    dictionary: allDictionary,
+    greenWords,
+    yellowWords,
+    redWords,
+  } = useAppSelector((state) => state.dictionary);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
   const [questionText, setQuestionText] = useState<string>("Переведите слово:");
   const [userAnswer, setUserAnswer] = useState<string>("");
@@ -49,6 +57,11 @@ export const useQuiz = () => {
     red: { answeredCount: 0, progressPercent: 0 },
   });
   const [dictionaryPercent, setDictionaryPercent] = useState<number>(100);
+
+  const dictionary = useMemo(() => {
+    if (lessonDictionary) return lessonDictionary;
+    return allDictionary;
+  }, [allDictionary, lessonDictionary]);
 
   const unansweredWords = useMemo(() => {
     return dictionary.filter(
