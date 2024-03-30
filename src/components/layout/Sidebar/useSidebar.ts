@@ -42,5 +42,6 @@ export const useSidebar = () => {
     defaultValue,
     handleClear,
     navigateToHome,
+    navigate,
   };
 };

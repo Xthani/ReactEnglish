@@ -6,6 +6,7 @@ import Button from "../Button";
 
 import "./styles.scss";
 import { IDictionary } from "../../../features/dictionary/types";
+import Main from "../Main";
 
 const QuizComponent: FC<{ lessonDictionary?: IDictionary[] }> = ({
   lessonDictionary,
@@ -23,7 +24,7 @@ const QuizComponent: FC<{ lessonDictionary?: IDictionary[] }> = ({
   } = useQuiz({ lessonDictionary });
 
   return (
-    <div className="main-container">
+    <Main>
       <div className="progress-bar">
         <div
           className="progress"
@@ -77,7 +78,7 @@ const QuizComponent: FC<{ lessonDictionary?: IDictionary[] }> = ({
           <ArrowIcon />
         </Button>
       </div>
-    </div>
+    </Main>
   );
 };
 

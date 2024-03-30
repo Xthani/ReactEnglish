@@ -1,6 +1,7 @@
 import { IDictionary } from "../dictionary/types";
 
 export interface ILessons {
+  id: string;
   lesson: string;
   dictionary: IDictionary[];
 }
