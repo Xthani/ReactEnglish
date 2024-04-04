@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "hooks";
 import { getRandomElement } from "utils";
 import { fetchDictionary } from "features/dictionary/actions";
 import {
+  clearErrors,
   clearWords,
   greenWordsAdded,
   redWordsAdded,
@@ -69,9 +70,16 @@ export const useQuiz = ({
         !greenWords.some(
           (greenWord) =>
             greenWord.ru === dictWord.ru && greenWord.en === dictWord.en,
+        ) &&
+        !redWords.some(
+          (redWord) => redWord.ru === dictWord.ru && redWord.en === dictWord.en,
+        ) &&
+        !yellowWords.some(
+          (yellowWord) =>
+            yellowWord.ru === dictWord.ru && yellowWord.en === dictWord.en,
         ),
     );
-  }, [dictionary, greenWords]);
+  }, [dictionary, greenWords, redWords, yellowWords]);
 
   const question = useMemo(() => {
     return unansweredWords.length && unansweredWords[currentQuestionIndex]
@@ -110,6 +118,10 @@ export const useQuiz = ({
 
   const handleClear = () => {
     dispatch(clearWords());
+  };
+
+  const handleClearErrors = () => {
+    dispatch(clearErrors());
   };
 
   const handleSubmit = () => {
@@ -160,6 +172,8 @@ export const useQuiz = ({
     progressBar,
     question,
     handleClear,
+    handleClearErrors,
+    isErrors: redWords.length + yellowWords.length,
     userAnswer,
     setUserAnswer,
     handleSubmit,

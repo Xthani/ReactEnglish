@@ -72,3 +72,12 @@
     }
   }
 }
+
+.endLesson-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  .button {
+    width: 100%;
+  }
+}

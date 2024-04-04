@@ -16,6 +16,8 @@ const QuizComponent: FC<{ lessonDictionary?: IDictionary[] }> = ({
     progressBar,
     question,
     handleClear,
+    handleClearErrors,
+    isErrors,
     userAnswer,
     setUserAnswer,
     handleSubmit,
@@ -57,7 +59,14 @@ const QuizComponent: FC<{ lessonDictionary?: IDictionary[] }> = ({
         <div>{question}</div>
       </div>
       {!unansweredWords.length && (
-        <Button onClick={handleClear}>Начать заново</Button>
+        <div className="endLesson-buttons">
+          <Button onClick={handleClear}>Начать заново</Button>
+          {isErrors && (
+            <Button variant="secondary" onClick={handleClearErrors}>
+              Поработать над ошибками
+            </Button>
+          )}
+        </div>
       )}
       <div className="answer-section">
         <input

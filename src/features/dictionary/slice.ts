@@ -13,6 +13,10 @@ export const dictionarySlice = createSlice({
       state.yellowWords = [];
       state.redWords = [];
     },
+    clearErrors(state) {
+      state.yellowWords = [];
+      state.redWords = [];
+    },
     greenWordsAdded(state, action: PayloadAction<IDictionary>) {
       state.yellowWords = state.yellowWords.filter(
         (word) => word.en !== action.payload.en,
@@ -63,7 +67,12 @@ export const dictionarySlice = createSlice({
   },
 });
 
-export const { clearWords, greenWordsAdded, redWordsAdded, yellowWordsAdded } =
-  dictionarySlice.actions;
+export const {
+  clearWords,
+  clearErrors,
+  greenWordsAdded,
+  redWordsAdded,
+  yellowWordsAdded,
+} = dictionarySlice.actions;
 
 export default dictionarySlice.reducer;
